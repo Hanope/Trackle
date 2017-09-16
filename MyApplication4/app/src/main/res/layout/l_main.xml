@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_marginTop="34dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/logo"
+            android:layout_width="165dp"
+            android:layout_height="41dp"
+            android:background="@drawable/logo"
+            android:layout_gravity="center_vertical|center_horizontal"
+            />
+
+        <ImageView android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_marginLeft="49dp"
+           android:layout_alignBottom="@+id/logo"
+            android:background="@drawable/my_page"
+            android:id="@+id/my_page"/>
+
+        </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_layout"
+        android:layout_below="@+id/title">
+        <EditText
+            android:inputType="textVisiblePassword"
+            android:singleLine="true"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:id="@+id/search"
+            android:background="@drawable/search"
+            android:layout_width="344dp"
+            android:layout_height="48dp"
+            android:textSize="15sp"
+            android:textCursorDrawable="@null"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_below="@+id/search_layout"
+        android:layout_marginTop="20dp"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recycler"
+            android:layout_height="match_parent"/>
+
+    </ScrollView>
+</RelativeLayout>
