@@ -11,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 
@@ -47,7 +50,12 @@ public class Main extends AppCompatActivity {
         my_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseMessaging.getInstance().subscribeToTopic("news");
+                FirebaseInstanceId.getInstance().getToken();
+
+
                 Intent intent = new Intent(Main.this, My_Page.class);
+                Log.e("noti",""+FirebaseInstanceId.getInstance().getToken());
                 startActivity(intent);
             }
         });

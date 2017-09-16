@@ -21,7 +21,7 @@ public class ArticleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article);
+        setContentView(R.layout.activity_aa);
 
 //        article_recycler = (RecyclerView)findViewById(R.id.articles_recycler);
 //        article_recycler.setHasFixedSize(false);
