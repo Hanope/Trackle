@@ -55,15 +55,15 @@ for row in rows:
             headline = li.find('strong', {"class" : "headline"})
             _title = headline.find('a')['href']
             article = {"user":user, "link": _title, "title": headline.find('a').text}
-            cursor.execute("INSERT INTO tracking (date, keyword, company, user, author) VALUES (%s, %s, %s, %s, %s)", (date, keyword, company, user, author))
-            cursor.execute("UPDATE tracking SET flag=1 WHERE id=%s", (id))
+            cursor.execute("INSERT INTO tracking (date, keyword, company, user, author, link, title) VALUES (%s, %s, %s, %s, %s, %s, %s)", (c_date, keyword, company, user, author, _title, headline.find('a').text))
+            cursor.execute("UPDATE tracking SET flag=1 WHERE id=%s AND keyword LIKE %s", (id, keyword))
             flag = 1
             article_push.append(article)
             break
 
     if flag == 0:
         url = "http://search.joins.com/JoongangNews?Keyword=" + keyword + "&SortType=New&SearchCategoryType=JoongangNews&PeriodType=All&ScopeType=All&ImageType=All&JplusType=All&BlogType=All&ImageSearchType=Image&TotalCount=0&StartCount=0&IsChosung=False&IssueCategoryType=All&IsDuplicate=True&Page=1&PageSize=10&IsNeedTotalCount=True"
-        flag = false
+        flag = 0
         for li in lis:
             c_date = li.findAll('em')[1].text
             c_date = datetime.strptime(c_date, '%Y.%m.%d %H:%M')
@@ -71,7 +71,8 @@ for row in rows:
                 headline = li.find('strong', {"class" : "headline"})
                 _title = headline.find('a')['href']
                 article = {"user":user, "link": _title, "title": headline.find('a').text}
-                cursor.execute("INSERT INTO tracking (date, keyword, company, user, author) VALUES (%s, %s, %s, %s, %s)", (date, keyword, company, user, author))
+                cursor.execute("INSERT INTO tracking (date, keyword, company, user, author, link, title) VALUES (%s, %s, %s, %s, %s, %s, %s)", (c_date, keyword, company, user, author, _title, headline.find('a').text))
+                cursor.execute("UPDATE tracking SET flag=1 WHERE id=%s AND keyword LIKE %s", (id, keyword))
                 flag = 1
                 article_push.append(article)
                 break
