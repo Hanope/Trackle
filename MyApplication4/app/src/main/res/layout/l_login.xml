@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#FFFFFF"
+    android:id="@+id/back"
     android:layout_height="match_parent"
     tools:context="com.example.yep.myapplication.Login">
 
@@ -74,8 +75,8 @@
             android:layout_height="wrap_content"
             android:text="Forget?"
             android:gravity="center_vertical"
-            android:paddingRight="7dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/main_color"
             android:textSize="15sp"
             />

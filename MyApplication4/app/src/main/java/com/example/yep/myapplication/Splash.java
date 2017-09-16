@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Splash extends AppCompatActivity {
     private ImageView main;
@@ -33,6 +35,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Splash.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        //fcm
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        FirebaseInstanceId.getInstance().getToken();
 //        mobile = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 //        wifi = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 //        getintent = getIntent();

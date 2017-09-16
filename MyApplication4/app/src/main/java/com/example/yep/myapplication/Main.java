@@ -13,7 +13,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -22,6 +25,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+
+import okhttp3.internal.io.RealConnection;
 
 public class Main extends AppCompatActivity {
     private SharedPreferences pref;
@@ -37,7 +42,11 @@ public class Main extends AppCompatActivity {
     JSONArray main_list = null;
     private String no = "0" ;
 
-    private  ImageView my_page;
+    private  ImageView btn_my_page;
+    private ImageView btn_search;
+    private EditText et_search;
+    private RelativeLayout back;
+
     private static final String TAG_TAG = "tag";
     private static final String TAG_TITLE = "title";
     private static final String TAG_IMAGE = "image";
@@ -46,17 +55,39 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_main);
-        my_page = (ImageView)findViewById(R.id.my_page);
-        my_page.setOnClickListener(new View.OnClickListener() {
+        btn_my_page = (ImageView)findViewById(R.id.btn_my_page);
+        btn_search = (ImageView)findViewById(R.id.btn_search) ;
+        et_search = (EditText)findViewById(R.id.search);
+        back =(RelativeLayout)findViewById(R.id.back);
+
+
+        //back
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseMessaging.getInstance().subscribeToTopic("news");
-                FirebaseInstanceId.getInstance().getToken();
-
-
+                hide_keyboard();
+            }
+        });
+        //my_page
+        btn_my_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent intent = new Intent(Main.this, My_Page.class);
                 Log.e("noti",""+FirebaseInstanceId.getInstance().getToken());
                 startActivity(intent);
+            }
+        });
+
+
+        //adapter refresh
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hide_keyboard();
+                if(!et_search.getText().equals("")&& et_search.getText()!=null){
+
+                }
             }
         });
 //        recyclerview = (RecyclerView) findViewById(R.id.recycler);
@@ -72,5 +103,8 @@ public class Main extends AppCompatActivity {
     }
 
 
-
+    void hide_keyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et_search.getWindowToken(), 0);
+    }
 }

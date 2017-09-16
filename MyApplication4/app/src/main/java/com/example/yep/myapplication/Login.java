@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import static android.R.id.content;
@@ -19,6 +20,7 @@ public class Login extends AppCompatActivity {
 
     private EditText edit_id, edit_pw;
     private TextView tv_login;
+    private  RelativeLayout back ;
 
     @Override
     protected void onStart() {
@@ -47,8 +49,17 @@ public class Login extends AppCompatActivity {
 
 
     void findid() {
+        back = (RelativeLayout)findViewById(R.id.back);
         edit_id = (EditText)findViewById(R.id.edit_input_id);
         edit_pw = (EditText)findViewById(R.id.edit_input_pw);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hide_keyboard();
+                edit_id.clearFocus();
+                edit_pw.clearFocus();
+            }
+        });
         tv_login = (TextView)findViewById(R.id.btn_login);
         tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
