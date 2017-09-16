@@ -19,7 +19,7 @@
         android:gravity="center"
         android:id="@+id/li1"
         android:layout_marginTop="108dp"
-        android:background="@drawable/round_white_color"
+        android:background="@drawable/rectangle_white_color"
         android:layout_height="40dp"
         android:layout_below="@+id/logo"
         android:layout_alignStart="@+id/li2">
@@ -47,7 +47,7 @@
         android:layout_below="@+id/li1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/round_white_color"
+        android:background="@drawable/rectangle_white_color"
         android:layout_height="40dp">
         <EditText
             android:id="@+id/edit_input_pw"

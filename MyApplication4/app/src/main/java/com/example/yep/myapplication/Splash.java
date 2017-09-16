@@ -41,7 +41,7 @@ public class Splash extends AppCompatActivity {
 
             setContentView(R.layout.l_splash);
             main = (ImageView) findViewById(R.id.loding_logo);
-//            Glide.with(Splash.this).load("http://175.126.38.139/img/itchap/splash_img.png").asBitmap().into(main);
+//            Glide.with(Splash.this).load(R.drawable.intro).asGif().into(main);
             Handler hd = new Handler();
             hd.postDelayed(new Runnable() {
                 @Override

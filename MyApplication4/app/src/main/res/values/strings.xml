@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Trackle</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_main">Main</string>
