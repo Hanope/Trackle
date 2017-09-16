@@ -28,6 +28,9 @@ html = req.text
 soup = BeautifulSoup(html, "lxml")
 
 lst_realtime_src = soup.find('ol', {"class": "lst_realtime_srch _tab_area"})
+if lst_realtime_src is None:
+    print("rs empty, exiting..")
+    exit() 
 lis = lst_realtime_src.findAll('li')
 cursor.execute("DELETE FROM article")
 

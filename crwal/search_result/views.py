@@ -17,16 +17,6 @@ from django.http import JsonResponse
 from konlpy.tag import Twitter
 from collections import Counter
 
-def get_tags(text, ntags=50):
-    spliter = Twitter()
-    nouns = spliter.nouns(text)
-    count = Counter(nouns)
-    return_list = []
-    for n, c in count.most_common(ntags):
-        temp = {'tag': n, 'count': c}
-        return_list.append(temp)
-    return return_list
- 
  
 def hyungtaeso(text, ntags = 3):    
     spliter = Twitter()
@@ -40,7 +30,10 @@ def hyungtaeso(text, ntags = 3):
     
     keywords = ""
     for tag in tags:
-        keywords = keywords + tag['tag']
+        if keywords != "":
+            keywords = keywords + ", "+tag['tag']
+        else:        
+            keywords = keywords + tag['tag']
     return keywords
 
 

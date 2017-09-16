@@ -17,9 +17,10 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^track_articles', include('track_articles.urls')),
-    url(r'^top_feed', include('top_feed.urls')),
+#    url(r'^api/track_articles', include('track_articles.urls')),
+    url(r'^api/topnews', include('top_feed.urls')),
     url(r'^json_test', include('json_test.urls')),
-    url(r'^search_result', include('search_result.urls')), 
+    url(r'^api/search', include('search_result.urls')), 
+    url(r'^api/tracking', include('tracking.urls')), 
     url(r'^admin/', admin.site.urls)
 ]

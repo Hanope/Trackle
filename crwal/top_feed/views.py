@@ -42,7 +42,7 @@ def feed(request):
         
         json_list = form_JSON(rs) 
 
-    print("db access error") 
+     
      
     for i in json_list:
         print(i['title'])
