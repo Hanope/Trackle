@@ -1,10 +1,10 @@
 package com.gas.trackle.service;
 
 import com.gas.trackle.domain.Article;
-
 import java.util.List;
 
-public interface ArticleService {
+public interface SearchService {
 
-    List<Article> findTop10News();
+    List<Article> search(String query);
+
 }
