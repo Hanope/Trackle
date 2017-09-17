@@ -56,7 +56,7 @@ def search(request):
 #    param = 'key1' in request.GET and request.GET['key1']
     # 넘겨 받을거임
     param = request.GET.get('keyword','')
-    page_size = int(request.GET.get('page_size',''))
+    page_size = 2 
     print("param: ", param, " ", page_size)
     url = "http://search.joins.com/JoongangNews?Keyword=" + param + "&SortType=New&SearchCategoryType=JoongangNews&PeriodType=All&ScopeType=All&ImageType=All&JplusType=All&BlogType=All&ImageSearchType=Image&TotalCount=0&StartCount=0&IsChosung=False&IssueCategoryType=All&IsDuplicate=True&Page=1&PageSize=10&IsNeedTotalCount=True"
 
@@ -98,5 +98,6 @@ def search(request):
             article["author"] = author.group()
             articles.append(article)
     json_list = form_JSON(articles)
-    return JsonResponse(json_list, safe=False)
+    dic = {'articles' : json_list}
+    return JsonResponse(dic)
 

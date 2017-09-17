@@ -27,13 +27,14 @@ def track(request):
     cursor = db.cursor()
     
     param = request.GET.get('keyword','')
+    print("parameter: ",param)
     sql = "SELECT * FROM tracking WHERE keyword = '" + param + "' ORDER BY date DESC"
     cursor.execute(sql)
 
     rows = cursor.fetchall()
 
     json_list = form_JSON(rows)
-        
+    dic = {'histories' :json_list}
     db.close()
-    return JsonResponse(json_list, safe =False)
+    return JsonResponse(dic)
  

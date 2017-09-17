@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 import requests
 import json
@@ -20,11 +21,20 @@ from django.http import JsonResponse
     keyword = key.text
     date = a.publish_date
 '''
+def remove_newline(param):   
+    return_str = ""
+    for char in param:
+        if char != '\n':
+            return_str = return_str + char    
+    return return_str
+
 
 def form_JSON(rs):
     json_list = []
     for row in rs:
-        json_dict = {'title' : str(row['title']), 'name' : row['content'], 'image' : row['image'], 'company' : row['company'], 'keyword' : row['keyword'], 'date' : row['date'], 'author' : row['author']}
+        temp_str = row['content']
+        temp_str = remove_newline(temp_str)
+        json_dict = {'title' : str(row['title']), 'name' : temp_str, 'image' : row['image'], 'company' : row['company'], 'keyword' : row['keyword'], 'date' : row['date'], 'author' : row['author']}
         json_list.append(json_dict)
     return json_list
 
@@ -43,8 +53,7 @@ def feed(request):
         json_list = form_JSON(rs) 
 
      
-     
-    for i in json_list:
-        print(i['title'])
-    return JsonResponse(json_list,safe=False)
+    dic = {'articles' : json_list}
+    return JsonResponse(dic)
+#    return JsonResponse(json_list,safe=False)
 
