@@ -1,5 +1,6 @@
 package com.example.yep.myapplication.model.article;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,22 +10,36 @@ import java.util.ArrayList;
 public class ArticleResult {
     public ArrayList<Article> articles;
 
-    public class Article{
-        public int id;
-
+    public class Article implements Serializable {
         public String title;
 
-        public String content;
+        public String name; //기사 내용
         public String image;
 
         public String company;
 
-        public String content_img;
-        public String content_text;
-
-        public String reporter;
+        public String keyword;
         public String date;
 
-        public String keyword;
+        public String author;
+
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDate() { return date; }
+
+        public String getImage() {
+            return image;
+        }
+
+        public String getKeyword() {
+            return keyword;
+        }
     }
 }

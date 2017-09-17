@@ -3,20 +3,14 @@ package com.example.yep.myapplication;
 import android.text.SpannableString;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by seowo on 2017-09-16.
- */
-
-/**
- * ImageView thumbnailView = (ImageView) findViewById(R.id.thumbnail_view);
- TextView messageView = (TextView) findViewById(R.id.message_view);
- String text = getString(R.string.text);
-
- Display display = getWindowManager().getDefaultDisplay();
- ArticleTextHelper.tryFlowText(text, thumbnailView, messageView, display);
  */
 
 public class ArticleTextHelper {
@@ -32,16 +26,15 @@ public class ArticleTextHelper {
         }
     }
 
-    public static void tryFlowText(String text, View thumbnailView, TextView messageView, Display display, int addPadding){
+    public static void tryFlowText(String text, int w, int h, TextView messageView, Display display, int addPadding){
         // There is nothing I can do for older versions, so just return
         if(!mNewClassAvailable) return;
 
-
-
         // Get height and width of the image and height of the text line
-        thumbnailView.measure(display.getWidth(), display.getHeight());
-        int height = thumbnailView.getMeasuredHeight();
-        int width = thumbnailView.getMeasuredWidth() + addPadding;
+
+        int height = h;
+        int width = w + addPadding;
+
         messageView.measure(width, height); //to allow getTotalPaddingTop
         int padding = messageView.getTotalPaddingTop();
         float textLineHeight = messageView.getPaint().getTextSize();

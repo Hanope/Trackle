@@ -4,31 +4,45 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="90dp">
 
     <TextView
-        android:text="date"
+        android:id="@+id/page_date"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/date"/>
+        android:text="17/09/20"
+        android:layout_alignBaseline="@+id/page_title"
+        android:layout_alignBottom="@+id/page_title"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/page_image_1"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/page_title"
+        android:layout_marginStart="200dp"
+        android:background="@color/g1"/>
 
     <TextView
-       android:id="@+id/title"
-        android:text="tecettcc"
+       android:id="@+id/page_title"
+        android:text="기사를 읽어오는 중입니다."
         android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/date"
+        android:layout_toRightOf="@+id/page_date"
         android:layout_marginLeft="7dp"
+        android:maxLines="2"
         android:background="@drawable/round_g1"
         android:layout_height="60dp"
        />
 
     <ImageView
+        android:id="@+id/page_image_2"
         android:layout_width="1dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/title"
-        android:layout_centerHorizontal="true"
+        android:layout_height="15dp"
+        android:layout_below="@+id/page_title"
+        android:layout_marginStart="200dp"
         android:background="@color/g1"/>
 
 </RelativeLayout>

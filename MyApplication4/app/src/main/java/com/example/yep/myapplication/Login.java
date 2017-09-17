@@ -17,10 +17,9 @@ import static android.R.id.content;
 
 public class Login extends AppCompatActivity {
 
-
+    private RelativeLayout login_view;
     private EditText edit_id, edit_pw;
     private TextView tv_login;
-    private  RelativeLayout back ;
 
     @Override
     protected void onStart() {
@@ -43,23 +42,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.l_login);
 
         findid();
-
     }
 
-
-
     void findid() {
-        back = (RelativeLayout)findViewById(R.id.back);
+        login_view = (RelativeLayout)findViewById(R.id.login_view);
         edit_id = (EditText)findViewById(R.id.edit_input_id);
         edit_pw = (EditText)findViewById(R.id.edit_input_pw);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hide_keyboard();
-                edit_id.clearFocus();
-                edit_pw.clearFocus();
-            }
-        });
         tv_login = (TextView)findViewById(R.id.btn_login);
         tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +58,12 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        login_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hide_keyboard();
+            }
+        });
 
     }
 

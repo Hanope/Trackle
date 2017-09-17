@@ -23,15 +23,16 @@ public class ArticleTextSpan implements LeadingMarginSpan.LeadingMarginSpan2 {
 
     @Override
     public int getLeadingMargin(boolean first) {
-        boolean isFirstMargin = first;
-        // a different algorithm for api 21+
-        if (Build.VERSION.SDK_INT >= 21) {
-            this.drawLineCount = this.wasDrawCalled ? this.drawLineCount + 1 : 0;
-            this.wasDrawCalled = false;
-            isFirstMargin = this.drawLineCount <= this.lines;
+        if (first) {
+            return margin;
         }
-
-        return isFirstMargin ? this.margin : 0;
+        else
+        {
+            //Offset for all other Layout layout ) { }
+     /*Returns * the number of rows which should be applied *     indent returned by getLeadingMargin (true)
+     * Note:* Indent only applies to N lines of the first paragraph.*/
+            return 0;
+        }
     }
 
     @Override
